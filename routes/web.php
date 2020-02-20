@@ -12,11 +12,24 @@
 */
 Route::view('/about','about')->name('about');
 Route::view('/contac','contac')->name('contac');
+
 Route::get('/', function () {
 	$nombre = "Job";
-    return view('home')->with('nombre',$nombre);
+    return view('welcome')->with('nombre',$nombre);
 });
 
 Route::get('miApp/{nombre?}',function($nombre='Usuario'){
 	return "mi app ".$nombre;
 });
+// ---------
+
+Route::resource('tarea',"tareaController");
+
+// ---------
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
